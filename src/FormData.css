@@ -1,0 +1,49 @@
+/* FormData.css */
+
+.data-table {
+  color: white;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #7c7b77;
+}
+
+.data-table tbody tr:hover {
+  background-color: #1a1d30;
+}
+.actctn {
+  display: flex;
+  flex-direction: column;
+}
+.upbtn {
+  font-size: 10px;
+  padding: 0px;
+  margin: 0px;
+  width: 5rem;
+  height: 20px;
+  background-color: rgb(133, 212, 160);
+}
+.debtn {
+  font-size: 10px;
+  padding: 0px;
+  margin: 0px;
+  width: 5rem;
+  height: 20px;
+  background-color: rgb(243, 66, 66);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}

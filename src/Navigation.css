@@ -1,0 +1,28 @@
+/* In your CSS file (e.g., Navigation.css) */
+.nav {
+  background-color: #0e101c; /* Set the background color */
+}
+
+ul {
+  list-style-type: none; /* Remove default list styles */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left; /* Float the list items horizontally */
+}
+
+a {
+  display: block;
+  color: white; /* Set the text color */
+  text-align: center;
+  padding: 14px 16px; /* Add padding to the anchor tags */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  background-color: #ddd; /* Change background color on hover */
+  color: black; /* Change text color on hover */
+}

@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Navigation from "./pages/Navigation";
+import Form from "./pages/Form";
+import FormData from "./pages/FormData";
+import NoPage from "./pages/Nopage";
+import "./App.css";
 
 function App() {
+  const userArrState = useState([]);
+  const userUpdate = useState({});
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Navigation userUpdate={userUpdate} />}>
+          <Route
+            index
+            element={
+              <Form userArrState={userArrState} userUpdate={userUpdate} />
+            }
+          />
+          <Route
+            path="display"
+            element={
+              <FormData userArrState={userArrState} userUpdate={userUpdate} />
+            }
+          />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
