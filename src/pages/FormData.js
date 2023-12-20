@@ -39,14 +39,12 @@ function FormData({ userArrState, userUpdate }) {
     navigate("/");
   }
   function deleteOnClick(userID) {
-    const [userTD] = userArr.filter((el) => el.id === userID);
     const otherUsers = userArr.filter((el) => el.id !== userID);
     fnref.current.value = "";
     agref.current.value = "";
     deref.current.value = "";
     setUserArr([...otherUsers]);
     setTempArr([...otherUsers]);
-    console.log(userTD);
   }
   function fnameChange(e) {
     const fvalue = e.target.value;
@@ -91,10 +89,6 @@ function FormData({ userArrState, userUpdate }) {
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
     setRender(!render);
-    console.log(filtArr);
-    console.log(tempArr);
-    console.log(agref.current.value);
-    console.log(deref.current.value);
   }
   function ageChange(e) {
     const avalue = e.target.value;
@@ -139,10 +133,6 @@ function FormData({ userArrState, userUpdate }) {
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
     setRender(!render);
-    console.log(filtArr);
-    console.log(tempArr);
-    console.log(fnref.current.value);
-    console.log(deref.current.value);
   }
   function designationChange(e) {
     const dvalue = e.target.value;
@@ -187,11 +177,6 @@ function FormData({ userArrState, userUpdate }) {
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
     setRender(!render);
-    console.log(dvalue);
-    console.log(filtArr);
-    console.log(tempArr);
-    console.log(fnref.current.value);
-    console.log(agref.current.value);
   }
   return (
     <>
