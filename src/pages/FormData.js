@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../FormData.css";
 import { useNavigate } from "react-router-dom";
 
 function FormData({ userArrState, userUpdate }) {
   const navigate = useNavigate();
+  const fnref = useRef();
+  const agref = useRef();
+  const deref = useRef();
+  const [tempArr, setTempArr] = useState([]);
+  const [render, setRender] = useState(false);
   const [userArr, setUserArr] = userArrState;
   const [, setUserUPST] = userUpdate;
-  let avlb = false;
-  if (userArr.length === 0) {
-    avlb = false;
-  } else {
-    avlb = true;
+  let avlb = userArr.length > 0;
+  useEffect(() => {
+    setTempArr([...userArr]);
+  }, []);
+  function removeDuplicateObjects(array, key) {
+    const uniqueObjectMap = {};
+    const uniqueArray = [];
+
+    array.forEach((obj) => {
+      const keyValue = obj[key];
+
+      // Use the key value to determine uniqueness
+      if (!uniqueObjectMap[keyValue]) {
+        uniqueObjectMap[keyValue] = true;
+        uniqueArray.push(obj);
+      }
+    });
+
+    return uniqueArray;
   }
   function updateOnClick(userID) {
     const [userUP] = userArr.filter((el) => el.id === userID);
@@ -22,13 +41,202 @@ function FormData({ userArrState, userUpdate }) {
   function deleteOnClick(userID) {
     const [userTD] = userArr.filter((el) => el.id === userID);
     const otherUsers = userArr.filter((el) => el.id !== userID);
+    fnref.current.value = "";
+    agref.current.value = "";
+    deref.current.value = "";
     setUserArr([...otherUsers]);
+    setRender(!render);
     console.log(userTD);
+  }
+  function fnameChange(e) {
+    const fvalue = e.target.value;
+    const filtArr = userArr.filter((element) => {
+      if (
+        agref.current.value === "" &&
+        deref.current.value === "" &&
+        element.firstName.includes(fvalue)
+      ) {
+        return true;
+      } else if (
+        agref.current.value !== "" &&
+        deref.current.value === "" &&
+        element.firstName.includes(fvalue) &&
+        element.age === agref.current.value
+      ) {
+        return true;
+      } else if (
+        agref.current.value === "" &&
+        deref.current.value !== "" &&
+        element.firstName.includes(fvalue) &&
+        element.designation === deref.current.value
+      ) {
+        return true;
+      } else if (
+        agref.current.value !== "" &&
+        deref.current.value !== "" &&
+        element.firstName.includes(fvalue) &&
+        element.designation === deref.current.value &&
+        element.age === agref.current.value
+      ) {
+        return true;
+      } else if (
+        agref.current.value === "" &&
+        deref.current.value === "" &&
+        fnref.current.value === ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (filtArr.length === 0) {
+      avlb = false;
+    } else {
+      avlb = true;
+    }
+    setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
+    setRender(!render);
+    console.log(filtArr);
+    console.log(tempArr);
+    console.log(agref.current.value);
+    console.log(deref.current.value);
+  }
+  function ageChange(e) {
+    const avalue = e.target.value;
+    const filtArr = userArr.filter((element) => {
+      if (
+        fnref.current.value === "" &&
+        deref.current.value === "" &&
+        element.age === avalue
+      ) {
+        return true;
+      } else if (
+        fnref.current.value !== "" &&
+        deref.current.value === "" &&
+        element.firstName.includes(fnref.current.value) &&
+        element.age === avalue
+      ) {
+        return true;
+      } else if (
+        fnref.current.value === "" &&
+        deref.current.value !== "" &&
+        element.designation === deref.current.value &&
+        element.age === avalue
+      ) {
+        return true;
+      } else if (
+        fnref.current.value !== "" &&
+        deref.current.value !== "" &&
+        element.designation === deref.current.value &&
+        element.firstName === fnref.current.value &&
+        element.age === avalue
+      ) {
+        return true;
+      } else if (
+        agref.current.value === "" &&
+        deref.current.value === "" &&
+        fnref.current.value === ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (filtArr.length === 0) {
+      avlb = false;
+    } else {
+      avlb = true;
+    }
+    setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
+    setRender(!render);
+    console.log(filtArr);
+    console.log(tempArr);
+    console.log(fnref.current.value);
+    console.log(deref.current.value);
+  }
+  function designationChange(e) {
+    const dvalue = e.target.value;
+    const filtArr = userArr.filter((element) => {
+      if (
+        fnref.current.value === "" &&
+        agref.current.value === "" &&
+        element.designation === dvalue
+      ) {
+        return true;
+      } else if (
+        fnref.current.value !== "" &&
+        agref.current.value === "" &&
+        element.firstName === fnref.current.value &&
+        element.designation === dvalue
+      ) {
+        return true;
+      } else if (
+        fnref.current.value === "" &&
+        agref.current.value !== "" &&
+        element.age === agref.current.value &&
+        element.designation === dvalue
+      ) {
+        return true;
+      } else if (
+        fnref.current.value !== "" &&
+        agref.current.value !== "" &&
+        element.age === agref.current.value &&
+        element.firstName === fnref.current.value &&
+        element.designation === dvalue
+      ) {
+        return true;
+      } else if (
+        agref.current.value === "" &&
+        deref.current.value === "" &&
+        fnref.current.value === ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (filtArr.length === 0) {
+      avlb = false;
+    } else {
+      avlb = true;
+    }
+    setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
+    setRender(!render);
+    console.log(dvalue);
+    console.log(filtArr);
+    console.log(tempArr);
+    console.log(fnref.current.value);
+    console.log(agref.current.value);
   }
   return (
     <>
       {avlb && (
         <div style={{ width: "100%" }}>
+          <div
+            style={{ display: "flex", flexDirection: "row", marginTop: "10px" }}
+          >
+            <label className="flf">First Name</label>
+            <input
+              ref={fnref}
+              className="fif"
+              onChange={fnameChange}
+              type="text"
+            ></input>
+            <label className="flf">Age</label>
+            <input
+              ref={agref}
+              className="fif"
+              onChange={ageChange}
+              type="number"
+            ></input>
+            <label className="flf">Designation</label>
+            <select ref={deref} className="fif" onChange={designationChange}>
+              <option value="">Select Designation</option>
+              <option value="Developer">Developer</option>
+              <option value="Designer">Designer</option>
+              <option value="Manager">Manager</option>
+            </select>
+          </div>
           <table className="data-table">
             <thead>
               <tr>
@@ -42,7 +250,7 @@ function FormData({ userArrState, userUpdate }) {
               </tr>
             </thead>
             <tbody>
-              {userArr.map((el) => (
+              {tempArr.map((el) => (
                 <tr key={el.id}>
                   <td>{el.firstName}</td>
                   <td>{el.lastName}</td>

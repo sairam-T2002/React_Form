@@ -36,14 +36,13 @@ export default function Form({ userArrState, userUpdate }) {
       ...data,
     };
     setUserArr([...userArr, newData]);
-    console.log(newData);
     if (isObjectEmpty(userUPST)) {
       submitRef.current.textContent = "Submit Successful";
     } else {
       submitRef.current.textContent = "Update Successful";
     }
     setUserUPST({});
-    setRender(!render);
+    // setRender(!render);
     reset();
   };
 
