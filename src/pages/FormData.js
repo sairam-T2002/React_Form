@@ -89,11 +89,6 @@ function FormData({ userArrState, userUpdate }) {
         return false;
       }
     });
-    if (filtArr.length === 0) {
-      avlb = false;
-    } else {
-      avlb = true;
-    }
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
     setRender(!render);
     console.log(filtArr);
@@ -142,11 +137,6 @@ function FormData({ userArrState, userUpdate }) {
         return false;
       }
     });
-    if (filtArr.length === 0) {
-      avlb = false;
-    } else {
-      avlb = true;
-    }
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
     setRender(!render);
     console.log(filtArr);
@@ -195,11 +185,6 @@ function FormData({ userArrState, userUpdate }) {
         return false;
       }
     });
-    if (filtArr.length === 0) {
-      avlb = false;
-    } else {
-      avlb = true;
-    }
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
     setRender(!render);
     console.log(dvalue);
