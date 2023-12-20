@@ -45,7 +45,7 @@ function FormData({ userArrState, userUpdate }) {
     agref.current.value = "";
     deref.current.value = "";
     setUserArr([...otherUsers]);
-    setRender(!render);
+    setTempArr([...otherUsers]);
     console.log(userTD);
   }
   function fnameChange(e) {
