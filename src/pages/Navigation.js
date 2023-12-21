@@ -16,10 +16,22 @@ export default function Navigation({ userUpdate }) {
         Employee Details
       </h2>
       <ul>
-        <li>
+        <li
+          style={{
+            backgroundColor: "#7c7b77",
+            borderRadius: "5px",
+            margin: "5px",
+          }}
+        >
           <Link to="/">Insert</Link>
         </li>
-        <li>
+        <li
+          style={{
+            backgroundColor: "#7c7b77",
+            borderRadius: "5px",
+            margin: "5px",
+          }}
+        >
           <Link onClick={() => setter({})} to="/display">
             Display
           </Link>

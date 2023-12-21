@@ -10,7 +10,6 @@ function isObjectEmpty(obj) {
 export default function Form({ userArrState, userUpdate }) {
   const [userArr, setUserArr] = userArrState;
   const [userUPST, setUserUPST] = userUpdate;
-  const [render, setRender] = useState(false);
   const submitRef = useRef();
   const {
     register,
