@@ -8,7 +8,6 @@ function FormData({ userArrState, userUpdate }) {
   const agref = useRef();
   const deref = useRef();
   const [tempArr, setTempArr] = useState([]);
-  const [render, setRender] = useState(false);
   const [userArr, setUserArr] = userArrState;
   const [, setUserUPST] = userUpdate;
   let avlb = userArr.length > 0;
@@ -88,7 +87,6 @@ function FormData({ userArrState, userUpdate }) {
       }
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
-    setRender(!render);
   }
   function ageChange(e) {
     const avalue = e.target.value;
@@ -132,7 +130,6 @@ function FormData({ userArrState, userUpdate }) {
       }
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
-    setRender(!render);
   }
   function designationChange(e) {
     const dvalue = e.target.value;
@@ -176,7 +173,6 @@ function FormData({ userArrState, userUpdate }) {
       }
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
-    setRender(!render);
   }
   return (
     <>
@@ -220,38 +216,40 @@ function FormData({ userArrState, userUpdate }) {
               </tr>
             </thead>
             <tbody>
-              {tempArr.map((el) => (
-                <tr key={el.id}>
-                  <td>{el.firstName}</td>
-                  <td>{el.lastName}</td>
-                  <td>{el.age}</td>
-                  <td>{el.email}</td>
-                  <td>{el.gender}</td>
-                  <td>{el.designation}</td>
-                  <td>
-                    <div className="actctn">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          updateOnClick(el.id);
-                        }}
-                        className="upbtn"
-                      >
-                        Update
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          deleteOnClick(el.id);
-                        }}
-                        className="debtn"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {tempArr
+                .sort((a, b) => a.age - b.age)
+                .map((el) => (
+                  <tr key={el.id}>
+                    <td>{el.firstName}</td>
+                    <td>{el.lastName}</td>
+                    <td>{el.age}</td>
+                    <td>{el.email}</td>
+                    <td>{el.gender}</td>
+                    <td>{el.designation}</td>
+                    <td>
+                      <div className="actctn">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            updateOnClick(el.id);
+                          }}
+                          className="upbtn"
+                        >
+                          Update
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            deleteOnClick(el.id);
+                          }}
+                          className="debtn"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
