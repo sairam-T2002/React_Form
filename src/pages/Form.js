@@ -80,6 +80,16 @@ export default function Form({ userArrState, userUpdate }) {
 
       {/* Age */}
       <label className="nFL">Age</label>
+      {/* <input
+        className="nF"
+        type="range"
+        id="health"
+        min="18"
+        max="99"
+        value="0"
+        step="10"
+        {...register("age")}
+      /> */}
       <input
         className="nF"
         type="number"
