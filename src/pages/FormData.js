@@ -21,7 +21,7 @@ function FormData({ userArrState, userUpdate }) {
     array.forEach((obj) => {
       const keyValue = obj[key];
 
-      // Use the key value to determine uniqueness
+      // key value to determine uniqueness
       if (!uniqueObjectMap[keyValue]) {
         uniqueObjectMap[keyValue] = true;
         uniqueArray.push(obj);
