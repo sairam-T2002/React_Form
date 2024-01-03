@@ -43,6 +43,7 @@ export default function Form({ userArrState, userUpdate }) {
     setUserUPST({});
     // setRender(!render);
     reset();
+    window.history.pushState({}, "", "/display");
   };
 
   useEffect(() => {
