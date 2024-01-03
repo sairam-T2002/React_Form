@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useForm, Controller } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "../Form.css";
 
 function isObjectEmpty(obj) {
@@ -8,6 +9,7 @@ function isObjectEmpty(obj) {
 }
 
 export default function Form({ userArrState, userUpdate }) {
+  const navigate = useNavigate();
   const [userArr, setUserArr] = userArrState;
   const [userUPST, setUserUPST] = userUpdate;
   const submitRef = useRef();
@@ -43,7 +45,7 @@ export default function Form({ userArrState, userUpdate }) {
     setUserUPST({});
     // setRender(!render);
     reset();
-    window.history.pushState({}, "", "/display");
+    navigate("/display");
   };
 
   useEffect(() => {

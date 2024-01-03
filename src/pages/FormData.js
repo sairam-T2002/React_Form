@@ -45,6 +45,7 @@ function FormData({ userArrState, userUpdate }) {
     setUserArr([...otherUsers]);
     setTempArr([...otherUsers]);
   }
+  // first name change handelling for filter functionality
   function fnameChange(e) {
     const fvalue = e.target.value;
     const filtArr = userArr.filter((element) => {
@@ -88,6 +89,7 @@ function FormData({ userArrState, userUpdate }) {
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
   }
+  // age change handelling for filter functionality
   function ageChange(e) {
     const avalue = e.target.value;
     const filtArr = userArr.filter((element) => {
@@ -131,6 +133,7 @@ function FormData({ userArrState, userUpdate }) {
     });
     setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
   }
+  //designation change handelling for filter functionality
   function designationChange(e) {
     const dvalue = e.target.value;
     const filtArr = userArr.filter((element) => {
