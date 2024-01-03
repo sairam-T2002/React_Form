@@ -21,6 +21,7 @@ export default function Navigation({ userUpdate }) {
             backgroundColor: "#7c7b77",
             borderRadius: "5px",
             margin: "5px",
+            width: "100px",
           }}
         >
           <Link to="/">Insert</Link>
@@ -30,6 +31,7 @@ export default function Navigation({ userUpdate }) {
             backgroundColor: "#7c7b77",
             borderRadius: "5px",
             margin: "5px",
+            width: "100px",
           }}
         >
           <Link onClick={() => setter({})} to="/display">
