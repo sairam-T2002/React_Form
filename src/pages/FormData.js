@@ -13,7 +13,7 @@ function FormData({ userArrState, userUpdate }) {
   let avlb = userArr.length > 0;
   useEffect(() => {
     setTempArr([...userArr]);
-  }, []);
+  }, [userArr]);
   function removeDuplicateObjects(array, key) {
     const uniqueObjectMap = {};
     const uniqueArray = [];
