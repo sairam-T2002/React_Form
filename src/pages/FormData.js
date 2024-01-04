@@ -45,130 +45,65 @@ function FormData({ userArrState, userUpdate }) {
     setUserArr([...otherUsers]);
     setTempArr([...otherUsers]);
   }
-  // first name change handelling for filter functionality
-  function fnameChange(e) {
-    const fvalue = e.target.value;
+  function filterChange() {
+    const fname = fnref.current.value.trim();
+    const age = agref.current.value.trim();
+    const designation = deref.current.value.trim();
     const filtArr = userArr.filter((element) => {
-      if (
-        agref.current.value === "" &&
-        deref.current.value === "" &&
-        element.firstName.includes(fvalue)
+      if (fname === "" && age === "" && designation === "") {
+        return true;
+      } else if (
+        fname !== "" &&
+        element.firstName.includes(fname) &&
+        age === "" &&
+        designation === ""
       ) {
         return true;
       } else if (
-        agref.current.value !== "" &&
-        deref.current.value === "" &&
-        element.firstName.includes(fvalue) &&
-        element.age === agref.current.value
+        fname === "" &&
+        age !== "" &&
+        element.age === age &&
+        designation === ""
       ) {
         return true;
       } else if (
-        agref.current.value === "" &&
-        deref.current.value !== "" &&
-        element.firstName.includes(fvalue) &&
-        element.designation === deref.current.value
+        fname === "" &&
+        age === "" &&
+        designation !== "" &&
+        element.designation === designation
       ) {
         return true;
       } else if (
-        agref.current.value !== "" &&
-        deref.current.value !== "" &&
-        element.firstName.includes(fvalue) &&
-        element.designation === deref.current.value &&
-        element.age === agref.current.value
+        fname !== "" &&
+        element.firstName.includes(fname) &&
+        age !== "" &&
+        element.age === age &&
+        designation === ""
       ) {
         return true;
       } else if (
-        agref.current.value === "" &&
-        deref.current.value === "" &&
-        fnref.current.value === ""
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
-  }
-  // age change handelling for filter functionality
-  function ageChange(e) {
-    const avalue = e.target.value;
-    const filtArr = userArr.filter((element) => {
-      if (
-        fnref.current.value === "" &&
-        deref.current.value === "" &&
-        element.age === avalue
+        fname !== "" &&
+        element.firstName.includes(fname) &&
+        age === "" &&
+        designation !== "" &&
+        element.designation === designation
       ) {
         return true;
       } else if (
-        fnref.current.value !== "" &&
-        deref.current.value === "" &&
-        element.firstName.includes(fnref.current.value) &&
-        element.age === avalue
+        fname === "" &&
+        age !== "" &&
+        element.age === age &&
+        designation !== "" &&
+        element.designation === designation
       ) {
         return true;
       } else if (
-        fnref.current.value === "" &&
-        deref.current.value !== "" &&
-        element.designation === deref.current.value &&
-        element.age === avalue
-      ) {
-        return true;
-      } else if (
-        fnref.current.value !== "" &&
-        deref.current.value !== "" &&
-        element.designation === deref.current.value &&
-        element.firstName === fnref.current.value &&
-        element.age === avalue
-      ) {
-        return true;
-      } else if (
-        agref.current.value === "" &&
-        deref.current.value === "" &&
-        fnref.current.value === ""
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    setTempArr([...removeDuplicateObjects([...filtArr], "id")]);
-  }
-  //designation change handelling for filter functionality
-  function designationChange(e) {
-    const dvalue = e.target.value;
-    const filtArr = userArr.filter((element) => {
-      if (
-        fnref.current.value === "" &&
-        agref.current.value === "" &&
-        element.designation === dvalue
-      ) {
-        return true;
-      } else if (
-        fnref.current.value !== "" &&
-        agref.current.value === "" &&
-        element.firstName === fnref.current.value &&
-        element.designation === dvalue
-      ) {
-        return true;
-      } else if (
-        fnref.current.value === "" &&
-        agref.current.value !== "" &&
-        element.age === agref.current.value &&
-        element.designation === dvalue
-      ) {
-        return true;
-      } else if (
-        fnref.current.value !== "" &&
-        agref.current.value !== "" &&
-        element.age === agref.current.value &&
-        element.firstName === fnref.current.value &&
-        element.designation === dvalue
-      ) {
-        return true;
-      } else if (
-        agref.current.value === "" &&
-        deref.current.value === "" &&
-        fnref.current.value === ""
+        fname !== "" &&
+        element.firstName.includes(fname) &&
+        age !== "" &&
+        element.age === age &&
+        designation !== "" &&
+        element.designation === designation
       ) {
         return true;
       } else {
@@ -188,18 +123,18 @@ function FormData({ userArrState, userUpdate }) {
             <input
               ref={fnref}
               className="fif"
-              onChange={fnameChange}
+              onChange={filterChange}
               type="text"
             ></input>
             <label className="flf">Age</label>
             <input
               ref={agref}
               className="fif"
-              onChange={ageChange}
+              onChange={filterChange}
               type="number"
             ></input>
             <label className="flf">Designation</label>
-            <select ref={deref} className="fif" onChange={designationChange}>
+            <select ref={deref} className="fif" onChange={filterChange}>
               <option value="">Select Designation</option>
               <option value="Developer">Developer</option>
               <option value="Designer">Designer</option>
