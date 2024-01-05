@@ -31,7 +31,7 @@ export default function Form({ userArrState, userUpdate }) {
     },
   });
 
-  const onSubmit = (data) => {
+  function onSubmit(data) {
     const newData = {
       id: uuidv4(),
       ...data,
@@ -46,7 +46,7 @@ export default function Form({ userArrState, userUpdate }) {
     // setRender(!render);
     reset();
     navigate("/display");
-  };
+  }
 
   useEffect(() => {
     setValue("gender", isObjectEmpty(userUPST) ? "" : userUPST.gender);
