@@ -46,7 +46,7 @@ function FormData({ userArrState, userUpdate }) {
     setTempArr([...otherUsers]);
   }
   function filterChange() {
-    const fname = fnref.current.value.trim();
+    const fname = fnref.current.value.trim().toLowerCase();
     const age = agref.current.value.trim();
     const designation = deref.current.value.trim();
     const filtArr = userArr.filter((element) => {
@@ -54,7 +54,7 @@ function FormData({ userArrState, userUpdate }) {
         return true;
       } else if (
         fname !== "" &&
-        element.firstName.includes(fname) &&
+        element.firstName.toLowerCase().includes(fname) &&
         age === "" &&
         designation === ""
       ) {
@@ -75,7 +75,7 @@ function FormData({ userArrState, userUpdate }) {
         return true;
       } else if (
         fname !== "" &&
-        element.firstName.includes(fname) &&
+        element.firstName.toLowerCase().includes(fname) &&
         age !== "" &&
         element.age === age &&
         designation === ""
@@ -83,7 +83,7 @@ function FormData({ userArrState, userUpdate }) {
         return true;
       } else if (
         fname !== "" &&
-        element.firstName.includes(fname) &&
+        element.firstName.toLowerCase().includes(fname) &&
         age === "" &&
         designation !== "" &&
         element.designation === designation
@@ -99,7 +99,7 @@ function FormData({ userArrState, userUpdate }) {
         return true;
       } else if (
         fname !== "" &&
-        element.firstName.includes(fname) &&
+        element.firstName.toLowerCase().includes(fname) &&
         age !== "" &&
         element.age === age &&
         designation !== "" &&
