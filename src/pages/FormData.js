@@ -192,7 +192,7 @@ function FormData({ userArrState, userUpdate }) {
           </table>
         </div>
       )}
-      {!avlb && <p>No data available to display</p>}
+      {(!avlb || tempArr.length === 0) && <p>No data available to display</p>}
     </>
   );
 }
